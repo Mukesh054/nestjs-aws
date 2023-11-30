@@ -1,0 +1,25 @@
+service: nest-serverless-lambda-demo
+
+plugins:
+  - serverless-webpack
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
+
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+functions:
+  main: # The name of the lambda function
+    # The module 'handler' is exported in the file 'src/lambda'
+    handler: src/main.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
