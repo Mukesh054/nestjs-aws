@@ -6,14 +6,14 @@ export class UsersService {
   constructor(private database: DatabaseService) {}
 
   async findAll() {
-    return await this.database.user.findMany();
+    return await this.database.client.user.findMany();
   }
 
   async findOne(id: string) {
-    return this.database.user.findFirst({ where: { id } });
+    return this.database.client.user.findFirst({ where: { id } });
   }
 
   async remove(id: string) {
-    return await this.database.user.delete({ where: { id } });
+    return await this.database.client.user.delete({ where: { id } });
   }
 }

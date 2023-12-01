@@ -7,6 +7,7 @@ plugins:
 
 custom:
   webpack:
+    packager: npm
     webpackConfig: 'webpack.config.js'
     includeModules: true
 
@@ -14,6 +15,11 @@ custom:
 provider:
   name: aws
   runtime: nodejs16.x
+  stage: dev
+  environment:
+    DATABASE_URL: ${env.DATABASE_URL}
+  httpApi:
+    cors: true
 
 functions:
   main: # The name of the lambda function

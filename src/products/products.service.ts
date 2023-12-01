@@ -6,11 +6,11 @@ export class ProductsService {
   constructor(private database: DatabaseService) {}
 
   async findAll() {
-    return await this.database.product.findMany();
+    return await this.database.client.product.findMany();
   }
 
   async findOne(id: string) {
-    const cart = await this.database.product.findFirst({ where: { id } });
+    const cart = await this.database.client.product.findFirst({ where: { id } });
     if (cart) {
       return cart;
     }

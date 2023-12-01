@@ -8,7 +8,7 @@ export class CartService {
   constructor(private database: DatabaseService) {}
 
   async getCart(id: string) {
-    return await this.database.cart.findFirst({
+    return await this.database.client.cart.findFirst({
       where: { id },
       select: {
         id: true,
@@ -23,7 +23,7 @@ export class CartService {
 
   async create(createCartDto: CreateCartDto) {
     try {
-      return await this.database.cart.create({
+      return await this.database.client.cart.create({
         data: {
           status: createCartDto.status,
           userId: createCartDto.userId,
@@ -38,7 +38,7 @@ export class CartService {
   }
 
   async findAll() {
-    return await this.database.cart.findMany({
+    return await this.database.client.cart.findMany({
       select: {
         id: true,
         createdAt: true,
@@ -60,7 +60,7 @@ export class CartService {
   }
 
   async update(id: string, updateCartDto: UpdateCartDto) {
-    return await this.database.cart.update({
+    return await this.database.client.cart.update({
       where: { id },
       data: {
         status: updateCartDto.status,
@@ -84,6 +84,6 @@ export class CartService {
   }
 
   async remove(id: string) {
-    return await this.database.cart.delete({ where: { id } });
+    return await this.database.client.cart.delete({ where: { id } });
   }
 }
