@@ -11,6 +11,8 @@ custom:
     webpackConfig: 'webpack.config.js'
     includeModules: true
 
+package:
+  individually: true
 
 provider:
   name: aws
