@@ -1,6 +1,7 @@
 const path = require('path');
 const slsw = require('serverless-webpack');
 const nodeExternals = require('webpack-node-externals');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -23,6 +24,9 @@ module.exports = {
     node: true,
   } /**Note: For Webpack 5, replace target: 'node' with the externalsPreset object.*/,
   externals: [nodeExternals()],
+  plugins: [
+    new CopyWebpackPlugin({ patterns: ['./prisma/schema.prisma'] }), // without this the prisma generate above will not work
+  ],
   module: {
     rules: [
       {

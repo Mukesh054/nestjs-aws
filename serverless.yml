@@ -10,13 +10,17 @@ custom:
     packager: npm
     webpackConfig: 'webpack.config.js'
     includeModules: true
+    packagerOptions:
+      scripts:
+        - prisma generate
 
-package:
-  individually: true
+#package:
+  #individually: false
+  #excludeDevDependencies: true
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs18.x
   stage: dev
   environment:
     DATABASE_URL: ${env.DATABASE_URL}
@@ -26,7 +30,7 @@ provider:
 functions:
   main: # The name of the lambda function
     # The module 'handler' is exported in the file 'src/lambda'
-    handler: src/main.handler2
+    handler: src/main.handler3
     events:
       - http:
           method: any
