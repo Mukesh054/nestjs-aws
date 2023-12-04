@@ -15,7 +15,7 @@ async function bootstrap(): Promise<Handler> {
   return serverlessExpress({ app: expressApp });
 }
 
-const handler: Handler = async (
+const handler2: Handler = async (
   event: any,
   context: Context,
   callback: Callback,
@@ -24,7 +24,7 @@ const handler: Handler = async (
   return cachedServer(event, context, callback);
 };
 
-export { handler };
+export { handler2 };
 
 
 // import { NestFactory } from '@nestjs/core';
